@@ -80,7 +80,7 @@ st.write("Accuracy:", accuracy_score(y_test_c, y_pred_c))
 print(classification_report(y_test_c, y_pred_c))
 
 # =====================================
-# 5. REGRESSION MODEL (PERCENTAGE)
+# 5. PERCENTAGE
 # =====================================
 
 rf_reg = RandomForestRegressor(
@@ -114,4 +114,3 @@ else:
     st.error("Predicted Result: FAIL")
 
 st.write("Predicted Final Percentage:", round(percentage_prediction,2))
-
