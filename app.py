@@ -1,7 +1,7 @@
 # =====================================
 #  EXAM RESULT PROJECT
 # =====================================
-
+import streamlit as st
 import pandas as pd
 import numpy as np
 
@@ -31,8 +31,9 @@ data = {
 
 df = pd.DataFrame(data)
 
-print("Dataset Created Successfully")
-print(df.head())
+st.title("Exam Result Prediction")
+st.write("Dataset Created Successfully")
+st.write(df.head())
 
 # =====================================
 # 2. DATA PREPROCESSING
@@ -74,8 +75,8 @@ rf_clf.fit(X_train, y_train_c)
 
 y_pred_c = rf_clf.predict(X_test)
 
-print("\n===== RESULT PREDICTION =====")
-print("Accuracy:", accuracy_score(y_test_c, y_pred_c))
+st.subheader("Result Prediction")
+st.write("Accuracy:", accuracy_score(y_test_c, y_pred_c))
 print(classification_report(y_test_c, y_pred_c))
 
 # =====================================
@@ -105,11 +106,12 @@ sample_student = X.iloc[0:1]
 result_prediction = rf_clf.predict(sample_student)[0]
 percentage_prediction = rf_reg.predict(sample_student)[0]
 
-print("\n===== SAMPLE STUDENT RESULT =====")
+st.subheader("Sample Student Result")
 
 if result_prediction == 1:
-    print("Predicted Result: PASS")
+    st.success("Predicted Result: PASS")
 else:
-    print("Predicted Result: FAIL")
+    st.error("Predicted Result: FAIL")
 
-print("Predicted Final Percentage:", round(percentage_prediction,2))
+st.write("Predicted Final Percentage:", round(percentage_prediction,2))
+
